@@ -1,0 +1,10 @@
+{ 
+  "shapes": {
+    "Line2D": 4,
+    "Line3D": 8,
+    "Circle2D": 1,
+    "Plane3D": 3
+  },
+  "num_points": 500,
+  "randomness": 0.7
+}
