@@ -29,7 +29,8 @@ def generator(config_path, output_path, debug=False):
             for i in range(data['shapes'][shape]):
                 newShape = getShape(shape)
                 shapesJason += newShape.asJson()
-                newPoints = newShape.CreatePoints(num_points, randomness)
+                newPoints = newShape.createPoints(num_points, randomness)
+                #todo chane json creation to dict
                 pointsJason += "{\nshape" + "{0}".format(i) + ":\n"
                 for point in newPoints:
                     pointsJason += point.asJson()
@@ -40,5 +41,6 @@ def generator(config_path, output_path, debug=False):
         f.write(pointsJason)
 
     if debug:
+        # todo using numpy to draw the shape
         print(shapesJason)
         print(pointsJason)

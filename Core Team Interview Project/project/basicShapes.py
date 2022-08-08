@@ -57,24 +57,21 @@ class Vector2D:
     @multimethod()
     def __init__(self):
         self.point1 = Point2D()
-        self.point2 = Point2D()
 
-    @multimethod(Point2D, Point2D)
-    def __init__(self, p1, p2):
+    @multimethod(Point2D)
+    def __init__(self, p1):
         self.point1 = p1
-        self.point2 = p2
 
-    @multimethod(float, float, float, float)
-    def __init__(self, x1, y1, x2, y2):
+    @multimethod(float, float)
+    def __init__(self, x1, y1):
         self.point1 = Point2D(x1, y1)
-        self.point2 = Point2D(x2, y2)
 
     def getVectorPoint(self):
-        resultPoint = self.point1 + self.point2
+        resultPoint = self.point1
         return resultPoint
 
     def __mul__(self, num):
-        resultVector = Vector2D(self.point1 * num, self.point2 * num)
+        resultVector = Vector2D(self.point1 * num)
         return resultVector
 
 
@@ -82,25 +79,19 @@ class Vector3D:
     @multimethod()
     def __init__(self):
         self.point1 = Point3D()
-        self.point2 = Point3D()
-        self.point3 = Point3D()
 
-    @multimethod(Point3D, Point3D, Point3D)
-    def __init__(self, p1, p2, p3):
+    @multimethod(Point3D)
+    def __init__(self, p1):
         self.point1 = p1
-        self.point2 = p2
-        self.point3 = p3
 
-    @multimethod(float, float, float, float, float, float)
-    def __init__(self, x1, y1, z1, x2, y2, z2, x3, y3, z3):
+    @multimethod(float, float, float)
+    def __init__(self, x1, y1, z1):
         self.point1 = Point3D(x1, y1, z1)
-        self.point2 = Point3D(x2, y2, z2)
-        self.point2 = Point3D(x3, y3, z3)
 
     def getVectorPoint(self):
-        resultPoint = self.point1 + self.point2 + self.point3
+        resultPoint = self.point1
         return resultPoint
 
     def __mul__(self, num):
-        resultVector = Vector3D(self.point1 * num, self.point2 * num, self.point3 * num)
+        resultVector = Vector3D(self.point1 * num)
         return resultVector

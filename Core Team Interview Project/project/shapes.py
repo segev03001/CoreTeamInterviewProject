@@ -34,12 +34,12 @@ class Line2D(Shape):
 
     # overriding abstract method
     def asJson(self):
-        Line2DJson = json.dumps(self, default=lambda o: o.__dict__,
+        line2DJson = json.dumps(self, default=lambda o: o.__dict__,
                                 sort_keys=True, indent=4)
-        return "{\nLine2D:" + Line2DJson + "\n}"
+        return "{\nLine2D:" + line2DJson + "\n}"
 
     # overriding abstract method
-    def CreatePoints(self, num_points, randomness):
+    def createPoints(self, num_points, randomness):
         percent80Points = int(0.8 * num_points)
         percent20Points = num_points - percent80Points
         resultPoints = []
@@ -49,7 +49,8 @@ class Line2D(Shape):
             ### L : a + t * V
             newVector = self.vector * onLine
             vectorPoint = newVector.getVectorPoint()
-            newPoint = vectorPoint + self.point
+            newPoint = vectorPoint
+            #todo chane random
             if num_point % 2 == 0:
                 newPoint.x = newPoint.x + distance
             if num_point % 3 == 0:
@@ -79,23 +80,24 @@ class Circle2D(Shape):
 
     # overriding abstract method
     def asJson(self):
-        Line2DJson = json.dumps(self, default=lambda o: o.__dict__,
+        line2DJson = json.dumps(self, default=lambda o: o.__dict__,
                                 sort_keys=True, indent=4)
-        return "{\nCircle2D:" + Line2DJson + "\n}"
+        return "{\nCircle2D:" + line2DJson + "\n}"
 
     # overriding abstract method
-    def CreatePoints(self, num_points, randomness):
+    def createPoints(self, num_points, randomness):
         percent80Points = int(0.8 * num_points)
         percent20Points = num_points - percent80Points
         resultPoints = []
         for num_point in range(percent80Points):
-            Angle = random.uniform(0.0, 360.0)
+            angle = random.uniform(0.0, 360.0)
             distance = random.uniform(-1 * randomness, randomness)
             ### x = cx + r * cos(a)
             ### y = cy + r * sin(a)
-            x = self.point.x + self.radius * math.cos(Angle)
-            y = self.point.y + self.radius * math.sin(Angle)
+            x = self.point.x + self.radius * math.cos(angle)
+            y = self.point.y + self.radius * math.sin(angle)
             newPoint = basicShapes.Point2D(x, y)
+            #todo chane random
             if num_point % 2 == 0:
                 newPoint.x = newPoint.x + distance
             if num_point % 3 == 0:
@@ -130,7 +132,7 @@ class Line3D(Shape):
         return "{\nLine3D:" + Line2DJson + "\n}"
 
     # overriding abstract method
-    def CreatePoints(self, num_points, randomness):
+    def createPoints(self, num_points, randomness):
         percent80Points = int(0.8 * num_points)
         percent20Points = num_points - percent80Points
         resultPoints = []
@@ -141,6 +143,7 @@ class Line3D(Shape):
             newVector = self.vector *onLine
             vectorPoint = newVector.getVectorPoint()
             newPoint = vectorPoint + self.point
+            #todo chane random
             if num_point % 2 == 0:
                 newPoint.x = newPoint.x + distance
             if num_point % 3 == 0:
@@ -171,10 +174,11 @@ class Plane3D(Shape):
 
     # overriding abstract method
     def asJson(self):
-        Line2DJson = json.dumps(self, default=lambda o: o.__dict__,
+        line2DJson = json.dumps(self, default=lambda o: o.__dict__,
                                 sort_keys=True, indent=4)
-        return "{\nPlane3D:" + Line2DJson + "\n}"
+        return "{\nPlane3D:" + line2DJson + "\n}"
 
     # overriding abstract method
-    def CreatePoints(self, num_points, randomness):
+    def createPoints(self, num_points, randomness):
+        # todo CreatePoints
         return []
